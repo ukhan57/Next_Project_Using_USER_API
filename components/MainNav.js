@@ -39,7 +39,7 @@ export default function MainNav() {
               aria-label="search"
               name='search'
             />
-            <Button type="submit" variant="outline-success">Search</Button>
+            <Button type="submit" variant="outline-secondary">Search</Button>
           </Form>
         </Navbar.Collapse>
       </Container>
