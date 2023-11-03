@@ -1,3 +1,12 @@
+/**********************************************************************************
+ *  WEB422 – Assignment 4* 
+ * I declare that this assignment is my own work in accordance with Seneca Academic Policy.* 
+ * No part of this assignment has been copied manually or electronically from any other source* 
+ * (including web sites) or distributed to other students.*
+ * 
+ * Name: Umar Khan Student ID: 145270211 Date: 11/03/2023
+ * **********************************************************************************/
+
 import { Container, Row, Col, Image } from 'react-bootstrap';
 
 export default function Home() {

@@ -33,7 +33,7 @@ export default function ArtworkCard({objectID}){
                     {`${objectDate}, ${classification}, ${medium}`}
                 </Card.Text>
                 <Link href={`/artwork/${objectID}`} passHref legacyBehavior>
-                    <a className="btn btn-primary">{objectID}</a>
+                    <a className="btn btn-dark">{objectID}</a>
                 </Link>
             </Card.Body>
         </Card>
