@@ -34,7 +34,7 @@ export default function MainNav() {
           <Form className="d-flex" onSubmit={handleSubmit}>
             <Form.Control
               type="search"
-              placeholder="Search"
+              placeholder="Search Something"
               className="me-2"
               aria-label="search"
               name='search'
