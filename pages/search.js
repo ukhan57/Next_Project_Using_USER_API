@@ -8,7 +8,7 @@ export default function AdvancedSearch(){
     const router = useRouter();
 
     function submitForm(data){
-        let queryString = `searchBy=${data.searchBy}`;
+        let queryString = `${data.searchBy}=true`;
 
         if (data.geolocation) {
             queryString += `&geolocation=${data.geolocation}`;
