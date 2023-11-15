@@ -1,10 +1,9 @@
-import '@/styles/globals.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Layout from '@/components/Layout';
 
 import { SWRConfig } from 'swr';
 
-const fetcher = async url => {
+const fetchers = async url => {
   const res = await fetch(url);
 
   // if the status code is not in the range 200-299,
@@ -21,7 +20,7 @@ const fetcher = async url => {
 
 export default function App({ Component, pageProps }) {
   return (
-    <SWRConfig value={{ fetcher }}>
+    <SWRConfig value={{ fetchers }}>
       <Layout>
       <Component {...pageProps} /> 
       </Layout>
