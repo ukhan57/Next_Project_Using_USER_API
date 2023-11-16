@@ -1,4 +1,3 @@
-
 import { searchHistoryAtom } from "@/store";
 import { useAtom } from "jotai";
 import { useRouter } from "next/router";

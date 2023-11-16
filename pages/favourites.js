@@ -1,4 +1,3 @@
-
 import { useAtom } from "jotai";
 import { favouritesAtom } from "@/store";
 import ArtworkCard from "@/components/ArtworkCard";
