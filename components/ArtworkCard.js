@@ -1,3 +1,4 @@
+
 import useSWR from "swr";
 import Error from "next/error";
 import { Card } from "react-bootstrap";
@@ -33,7 +34,7 @@ export default function ArtworkCard({objectID}){
                     {`${objectDate}, ${classification}, ${medium}`}
                 </Card.Text>
                 <Link href={`/artwork/${objectID}`} passHref legacyBehavior>
-                    <a className="btn btn-dark">{objectID}</a>
+                    <a className="btn btn-outline-dark">{objectID}</a>
                 </Link>
             </Card.Body>
         </Card>

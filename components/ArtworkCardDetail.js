@@ -1,10 +1,21 @@
+
 import useSWR from "swr";
 import Error from "next/error";
-import { Card } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
+
+import { useAtom } from "jotai";
+import { favouritesAtom } from "@/store";
+import { useState } from "react";
 
 const fetcher = (url) => fetch(url).then((res) => res.json()); 
+
 export default function ArtworkCardDetail({objectID}){
-    const { data, error } = useSWR(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${objectID}`, fetcher);
+
+    const [favouritesList, setFavouritesList] = useAtom(favouritesAtom);
+    const [showAdded, setShowAdded] = useState(favouritesList.includes(objectID));
+
+    const {data, error} = useSWR(objectID ? `https://collectionapi.metmuseum.org/public/collection/v1/objects/${objectID}` : null, fetcher)
+    // const { data, error } = useSWR(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${objectID}`, fetcher);
 
     if(error){
         return <Error statusCode={500} />;
@@ -13,6 +24,16 @@ export default function ArtworkCardDetail({objectID}){
     if(!data){
         return null;
     }
+
+    const favouritesClicked = () => {
+        if (showAdded) {
+            setFavouritesList((current) => current.filter((fav) => fav != objectID));
+        }
+        else {
+            setFavouritesList((current) => [...current, objectID]);
+        }
+        setShowAdded(!showAdded);
+    };
 
     const cardImg = data.primaryImage;
     const cardTitle = data.title || "N/A";
@@ -46,6 +67,10 @@ export default function ArtworkCardDetail({objectID}){
                     {`Credit Line: ${creditline}`}
                     <br />
                     {`Dimensions: ${dimensions}`}
+                    <br /> <br />
+                    <Button variant={showAdded ? "dark" : "outline-dark"} onClick={favouritesClicked}>
+                        {showAdded ? "+ Favourite (added)" : "+ Favourite"}
+                    </Button>
                 </Card.Text>
             </Card.Body>
         </Card>

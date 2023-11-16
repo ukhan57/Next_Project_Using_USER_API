@@ -8,10 +8,16 @@ import Navbar from 'react-bootstrap/Navbar';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useState } from 'react';
+import { Dropdown } from 'react-bootstrap';
+
+import { searchHistoryAtom } from '@/store';
+import { useAtom } from 'jotai';
 
 
 export default function MainNav() {
     const [isExpanded, setIsExpanded] = useState(false);
+    const [searchHistory, setSearchHistory] = useAtom(searchHistoryAtom)
+
     const router = useRouter();
 
     const handleSubmit = (e) => {
@@ -19,6 +25,8 @@ export default function MainNav() {
         const searchField = e.target.elements.search.value;
         router.push(`/artwork?title=true&q=${searchField}`)
         setIsExpanded(false)
+
+        setSearchHistory((current) => [...current, `title=true&q=${searchField}`])
     };
 
     const handleNavToggle = (e) => {
@@ -27,6 +35,10 @@ export default function MainNav() {
 
     const handleNavLinks = () => {
       setIsExpanded(false);
+    }
+
+    const handleDropToggle = (e) => {
+      setIsExpanded(!isExpanded)
     }
 
   return (
@@ -41,8 +53,8 @@ export default function MainNav() {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Link href="/" passHref legacyBehavior><Nav.Link onClick={handleNavLinks}>Home</Nav.Link></Link>
-            <Link href="/search" passHref legacyBehavior><Nav.Link onClick={handleNavLinks}>Advanced Search</Nav.Link></Link>
+            <Link href="/" passHref legacyBehavior><Nav.Link onClick={handleNavLinks} active={router.pathname === "/"}>Home</Nav.Link></Link>
+            <Link href="/search" passHref legacyBehavior><Nav.Link onClick={handleNavLinks} active={router.pathname === "/search"}>Advanced Search</Nav.Link></Link>
           </Nav>
           &nbsp;
           <Form className="d-flex" onSubmit={handleSubmit}>
@@ -55,6 +67,18 @@ export default function MainNav() {
             />
             <Button type="submit" variant="outline-secondary">Search</Button>
           </Form>
+          &nbsp;
+          <Nav>
+            <Dropdown>
+              <Dropdown.Toggle variant="dark" id="dropdown-basic">
+                User Name
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Link href="/favourites" passHref legacyBehavior><Dropdown.Item onClick={handleDropToggle} active={router.pathname === "/favourites"}>Favourites</Dropdown.Item></Link>
+                <Link href="/history" passHref legacyBehavior><Dropdown.Item onClick={handleDropToggle} active={router.pathname === "/history"}>Search History</Dropdown.Item></Link>
+              </Dropdown.Menu>
+            </Dropdown>
+          </Nav>
           &nbsp;
         </Navbar.Collapse>
       </Container>
