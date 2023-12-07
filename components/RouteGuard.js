@@ -19,7 +19,7 @@ export default function RouteGuard(props){
     const [searchHistory, setSearchHistory] = useAtom(searchHistoryAtom);
 
     useEffect(() => {
-        // To ensure that the atoms are up t date when the user refreshes the page
+        // To ensure that the atoms are up to date when the user refreshes the page
         updateAtoms();
         // on initial load - run auth check
         authCheck(router.pathname);
@@ -48,8 +48,6 @@ export default function RouteGuard(props){
         setSearchHistory(await getHistory());
     }
 
-    
-
-    return <>{authorized && props.children}</>
+  return <>{authorized && props.children}</>
 }
 
