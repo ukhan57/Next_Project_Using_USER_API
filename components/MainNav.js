@@ -85,7 +85,7 @@ export default function MainNav() {
           &nbsp;
           <Nav>
            {token && <Dropdown>
-              <Dropdown.Toggle variant="dark" id="dropdown-basic">
+              <Dropdown.Toggle variant="dark" id="dropdown-basic" isExpanded>
                 {token && <> {token.userName}</>}
               </Dropdown.Toggle>
               <Dropdown.Menu>
