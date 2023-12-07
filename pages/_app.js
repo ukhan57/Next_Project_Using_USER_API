@@ -3,6 +3,8 @@ import Layout from '@/components/Layout';
 
 import { SWRConfig } from 'swr';
 
+import RouteGuard from '@/components/RouteGuard';
+
 const fetchers = async url => {
   const res = await fetch(url);
 
@@ -20,10 +22,12 @@ const fetchers = async url => {
 
 export default function App({ Component, pageProps }) {
   return (
+  <RouteGuard>
     <SWRConfig value={{ fetchers }}>
       <Layout>
       <Component {...pageProps} /> 
       </Layout>
     </SWRConfig>
-    )  
+  </RouteGuard>
+  )  
 }
