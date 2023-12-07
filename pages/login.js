@@ -25,8 +25,8 @@ export default function Login(props){
         console.log(`TODO: Submit Form with: ${user} / ${password}`)
         try {
             await authenticateUser(user, password);
-            await updateAtoms();
             router.push("/favourites");
+            await updateAtoms();
         } catch (err) {
             setWarning(err.message);
         }
