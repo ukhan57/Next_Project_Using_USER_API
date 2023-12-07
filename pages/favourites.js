@@ -8,9 +8,14 @@ export default function Favourites () {
 
     if(!favouritesList) return (
         <Card>
-            <CardTitle>Sorry</CardTitle>
-            &nbsp;
-            <CardBody>Please try refreshing the page!</CardBody>
+            <Card.Body>
+                <Card.Title>
+                    Sorry!
+                </Card.Title>
+                <Card.Text>
+                    Try refreshing the page!
+                </Card.Text>
+            </Card.Body>
         </Card>
     )
     else
