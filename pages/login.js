@@ -20,6 +20,11 @@ export default function Login(props){
     const [user, setUser] = useState("");
     const [password, setPassword] = useState("");
 
+    async function updateAtoms(){
+        setFavouriteList(await getFavourites());
+        setSearchHistory(await getHistory());
+    }
+
     async function handleSubmit(e) {
         e.preventDefault();
         console.log(`TODO: Submit Form with: ${user} / ${password}`)
@@ -30,11 +35,6 @@ export default function Login(props){
         } catch (err) {
             setWarning(err.message);
         }
-    }
-
-    async function updateAtoms(){
-        setFavouriteList(await getFavourites());
-        setSearchHistory(await getHistory());
     }
 
     return (
