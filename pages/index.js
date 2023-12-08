@@ -1,12 +1,11 @@
 /**********************************************************************************
- *  WEB422 – Assignment 6* 
- * I declare that this assignment is my own work in accordance with Seneca Academic Policy.* 
- * No part of this assignment has been copied manually or electronically from any other source* 
- * (including web sites) or distributed to other students.*
- * 
- * Name: Umar Khan Student ID: 145270211 Date: 12/07/2023
- * **********************************************************************************/
-
+ *  WEB422 – Assignment 06*
+ *  I declare that this assignment is my own work in accordance with Seneca Academic Policy. No part of this
+ *  assignment has been copied manually or electronically from any other source (including web sites) or
+ *  distributed to other students.
+ *  Name: Umar Khan Student ID: 145270211 Date: 12/07/2023
+ *  Vercel App (Deployed) Link: https://web422-assignment6-next-project.vercel.app/
+ * *********************************************************************************/
 import { Container, Row, Col, Image } from 'react-bootstrap';
 
 export default function Home() {
